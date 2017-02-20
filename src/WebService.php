@@ -23,11 +23,13 @@ abstract class WebService
         $this->version['Major'] = $major;
         $this->version['Intermediate'] = $intermediate;
         $this->version['Minor'] = $minor;
+        return $this;
     }
 
     function setTransactionDetail($transactionDetail)
     {
         $this->transactionDetail['CustomerTransactionId'] = $transactionDetail;
+        return $this;
     }
 
     function setUserCredential($key, $password, $account, $meter)
@@ -36,12 +38,13 @@ abstract class WebService
         $this->userCredential['Password'] = $password;
         $this->clientDetail['AccountNumber'] = $account;
         $this->clientDetail['MeterNumber'] = $meter;
+        return $this;
     }
 
     function setWsdl($wsdl)
     {
-        if (!file_exists($wsdl)) throw new \Exception('File Not Found: ' . realpath($wsdl));
         $this->wsdlPath = $wsdl;
+        return $this;
     }
 
     function toArray(){
