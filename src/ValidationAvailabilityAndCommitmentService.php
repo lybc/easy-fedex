@@ -2,10 +2,12 @@
 namespace Fedex\Service;
 class ValidationAvailabilityAndCommitmentService extends WebService
 {
-    private $origin = array();
-    private $destination = array();
-    private $shipDate;
-    private $carrierCode;
+    protected $origin = array();
+    protected $destination = array();
+    protected $shipDate;
+    protected $carrierCode;
+    protected $service;
+    protected $packing;
 
     /**
      * @param mixed $carrierCode
@@ -36,8 +38,6 @@ class ValidationAvailabilityAndCommitmentService extends WebService
         $this->packing = $packing;
         return $this;
     }
-    private $service;
-    private $packing;
 
     function setOrigin($postCode, $countryCode)
     {
@@ -56,6 +56,7 @@ class ValidationAvailabilityAndCommitmentService extends WebService
     function setShipDate($data)
     {
         $this->shipDate = $data;
+        return $this;
     }
 
     function __construct()
@@ -77,7 +78,7 @@ class ValidationAvailabilityAndCommitmentService extends WebService
 
     function call()
     {
-        parent::call()->serviceAvailability($this->toArray());
+        return parent::call()->serviceAvailability($this->toArray());
     }
 }
 $path_to_wsdl = "wsdl/ValidationAvailabilityAndCommitmentService_v6.wsdl";
