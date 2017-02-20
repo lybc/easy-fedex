@@ -1,0 +1,15 @@
+{
+    "name": "lybc/easy-fedex",
+    "description": "sdk for fedex web service",
+    "authors": [
+        {
+            "name": "lybc",
+            "email": "lybcli@163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fedex\\Service\\": "src/"
+        }
+    }
+}
