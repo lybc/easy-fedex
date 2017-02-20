@@ -56,6 +56,6 @@ abstract class WebService
     function call()
     {
         ini_set("soap.wsdl_cache_enabled", "0");
-        return new SoapClient($this->wsdlPath, array('trace' => 1));
+        return new \SoapClient($this->wsdlPath, array('trace' => 1));
     }
 }
