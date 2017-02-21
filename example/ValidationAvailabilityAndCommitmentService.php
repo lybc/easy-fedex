@@ -7,5 +7,5 @@ $service->setUserCredential('xx', 'xx', 'xx', 'xx')
     ->setDestination('38017', 'US')
     ->setCarrierCode('FDXE')
     ->setService('PRIORITY_OVERNIGHT')
-    ->setPacking('FEDEX_BOX')
+    ->setPackaging('FEDEX_BOX')
     ->call();

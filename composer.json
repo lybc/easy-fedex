@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Fedex\\Service\\": "src/"
+            "Fedex\\": "src/"
         }
     }
 }
