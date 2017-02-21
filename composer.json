@@ -10,6 +10,7 @@
     "autoload": {
         "psr-4": {
             "Fedex\\": "src/"
-        }
+        },
+        "files": ["src/utils.php"]
     }
 }

@@ -17,11 +17,13 @@ class TrackService extends WebService
     /**
      * @param $type
      * @param $tracingNum
+     * @return $this
      */
     function setSelectionDetails($type, $tracingNum)
     {
-        $this->options['PackageIdentifier']['type'] = $type;
-        $this->options['PackageIdentifier']['Value'] = $tracingNum;
+        arr_set($this->options, 'PackageIdentifier.type', $type);
+        arr_set($this->options, 'PackageIdentifier.value', $tracingNum);
+        return $this;
     }
 
     function call()
