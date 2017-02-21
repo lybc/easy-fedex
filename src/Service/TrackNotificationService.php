@@ -20,7 +20,7 @@ class TrackNotificationService extends WebService
 
     function __construct()
     {
-        $this->setWsdl(dirname(__FILE__) . '/../wsdl/TrackService_v12.wsdl');
+        $this->setWsdl('TrackService_v12.wsdl');
         $this->setVersionInfo($this->_serviceId, $this->_wsdlVersion, '0', '0');
     }
 
@@ -30,32 +30,55 @@ class TrackNotificationService extends WebService
      */
     function setTrackingNumber($tracingNum)
     {
-        $this->options['TrackingNumber'] = $tracingNum;
+        arr_set($this->options, 'TrackingNumber', $tracingNum);
         return $this;
     }
 
     function setSenderInfo($email, $contactName)
     {
-        $this->options['SenderEMailAddress'] = $email;
-        $this->options['SenderContactName'] = $contactName;
+        arr_set($this->options, 'SenderEMailAddress', $email);
+        arr_set($this->options, 'SenderContactName', $contactName);
         return $this;
     }
 
     function setPersonalMessage($msg)
     {
-        $this->options['EventNotificationDetail']['PersonalMessage'] = $msg;
+        arr_set($this->options, 'EventNotificationDetail.PersonalMessage', $msg);
         return $this;
     }
 
     function setNotificationEvent($event = self::EVENT_ON_DELIVERY)
     {
-        $this->options['EventNotificationDetail']['EventNotifications']['Events'] = $event;
+        arr_set($this->options, 'EventNotificationDetail.EventNotifications.Events', $event);
         return $this;
     }
 
     function setNotificationType($type = self::TYPE_HTML)
     {
-        $this->options['EventNotificationDetail']['NotificationDetail']['NotificationType'] = $type;
+        arr_set(
+            $this->options,
+            'EventNotificationDetail.EventNotifications.NotificationDetail.NotificationType',
+            $type
+        );
+
+        return $this;
+    }
+
+    function setReceiverInfo($email, $name)
+    {
+        arr_set(
+            $this->options,
+            'EventNotificationDetail.EventNotifications.NotificationDetail.EmailDetail.EmailAddress',
+            $email
+        );
+
+        arr_set(
+            $this->options,
+            'EventNotificationDetail.EventNotifications.NotificationDetail.EmailDetail.Name',
+            $name
+        );
+
+        return $this;
     }
 
     function call()

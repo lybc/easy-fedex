@@ -33,9 +33,14 @@ abstract class WebService
         return $this;
     }
 
+    function set($key, $value)
+    {
+        arr_set($this->options, $key, $value);
+    }
+
     function setWsdl($wsdl)
     {
-        $this->wsdlPath = $wsdl;
+        $this->wsdlPath = wsdl_path($wsdl);
         return $this;
     }
 

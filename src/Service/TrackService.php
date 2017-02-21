@@ -10,7 +10,7 @@ class TrackService extends WebService
 
     function __construct()
     {
-        $this->setWsdl(dirname(__FILE__) . '/../wsdl/TrackService_v12.wsdl');
+        $this->setWsdl('TrackService_v12.wsdl');
         $this->setVersionInfo($this->_serviceId, $this->_wsdlVersion, '0', '0');
     }
 

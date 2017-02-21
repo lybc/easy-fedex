@@ -8,7 +8,7 @@ class ValidationAvailabilityAndCommitmentService extends WebService
 
     function __construct()
     {
-        $this->setWsdl(dirname(__FILE__) . '/../wsdl/ValidationAvailabilityAndCommitmentService_v6.wsdl');
+        $this->setWsdl('ValidationAvailabilityAndCommitmentService_v6.wsdl');
         $this->setShipDate(date('Y-m-d'));
         $this->setVersionInfo($this->_serviceId, $this->_wsdlVersion, '0', '0');
     }

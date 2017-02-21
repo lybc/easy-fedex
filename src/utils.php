@@ -15,3 +15,10 @@ if (!function_exists('arr_set')) {
         }
     }
 }
+
+if (!function_exists('wsdl_path')) {
+    function wsdl_path($filename)
+    {
+        return dirname(__FILE__) . '/wsdl/' . $filename;
+    }
+}
