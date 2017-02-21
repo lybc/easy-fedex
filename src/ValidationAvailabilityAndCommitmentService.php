@@ -9,6 +9,13 @@ class ValidationAvailabilityAndCommitmentService extends WebService
     protected $service;
     protected $packing;
 
+
+    function __construct()
+    {
+        $this->setWsdl(dirname(__FILE__) . '/wsdl/ValidationAvailabilityAndCommitmentService_v6.wsdl');
+        $this->setShipDate(date('Y-m-d'));
+    }
+
     /**
      * @param mixed $carrierCode
      * @return ValidationAvailabilityAndCommitmentService
@@ -41,14 +48,14 @@ class ValidationAvailabilityAndCommitmentService extends WebService
 
     function setOrigin($postCode, $countryCode)
     {
-        $this->origin['PostCode'] = $postCode;
+        $this->origin['PostalCode'] = $postCode;
         $this->origin['CountryCode'] = $countryCode;
         return $this;
     }
 
     function setDestination($postCode, $countryCode)
     {
-        $this->destination['PostCode'] = $postCode;
+        $this->destination['PostalCode'] = $postCode;
         $this->destination['CountryCode'] = $countryCode;
         return $this;
     }
@@ -59,10 +66,6 @@ class ValidationAvailabilityAndCommitmentService extends WebService
         return $this;
     }
 
-    function __construct()
-    {
-        $this->setWsdl('wsdl/ValidationAvailabilityAndCommitmentService_v6.wsdl');
-    }
 
     function toArray()
     {
@@ -78,6 +81,11 @@ class ValidationAvailabilityAndCommitmentService extends WebService
 
     function call()
     {
-        return parent::call()->serviceAvailability($this->toArray());
+        try {
+            $response = parent::call()->serviceAvailability($this->toArray());
+            return $response;
+        } catch (\SoapFault $e) {
+            var_dump($e);
+        }
     }
 }
