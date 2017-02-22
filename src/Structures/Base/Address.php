@@ -6,7 +6,7 @@
  * Time: 14:17
  */
 
-namespace Fedex\Structures;
+namespace Fedex\Structures\Base;
 
 
 use Fedex\AbstractStructure;
