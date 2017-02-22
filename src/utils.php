@@ -22,3 +22,15 @@ if (!function_exists('wsdl_path')) {
         return dirname(__FILE__) . '/wsdl/' . $filename;
     }
 }
+
+if (!function_exists('compose')) {
+    function compose()
+    {
+        $params = func_get_args();
+        $options = [];
+        foreach ($params as $param) {
+            array_merge($options, $param->toArray());
+        }
+        return $options;
+    }
+}
