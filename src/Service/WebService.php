@@ -55,7 +55,7 @@ abstract class WebService
         return $this;
     }
 
-    function set(AbstractStructure $struct)
+    function addStruct(AbstractStructure $struct)
     {
         $this->options = array_merge($this->options, $struct->toArray());
         return $this;

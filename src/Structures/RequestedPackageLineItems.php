@@ -47,4 +47,22 @@ class RequestedPackageLineItems extends AbstractStructure
         arr_set($this->_option, $this->key('CustomerReferences'), $references->toArray());
         return $this;
     }
+
+    function setGroupPackageCount($count)
+    {
+        arr_set($this->_option, $this->key('GroupPackageCount'), $count);
+        return $this;
+    }
+
+    function setPhysicalPackaging($physicalPackaging)
+    {
+        arr_set($this->_option, $this->key('PhysicalPackaging'), $physicalPackaging);
+        return $this;
+    }
+
+    function setItemDescription($desc)
+    {
+        arr_set($this->_option, $this->key('ItemDescription'), $desc);
+        return $this;
+    }
 }
