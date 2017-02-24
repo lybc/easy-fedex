@@ -3,6 +3,8 @@ namespace Fedex\Structures;
 
 
 use Fedex\AbstractStructure;
+use Fedex\Structures\Base\Address;
+use Fedex\Structures\Base\Contact;
 
 /**
  * Class ShippingChargePayment
@@ -31,19 +33,22 @@ class ShippingChargePayment extends AbstractStructure
      */
     function setPayor(Payor $payor)
     {
-        arr_set($this->_option, $this->_name, $payor->toArray());
+        $this->_option[$this->_name][] = $payor->toArray();
+
         return $this;
     }
 
     function setContact(Contact $contact)
     {
-        arr_set($this->_option, $this->_name, $contact->toArray());
+        $this->_option[$this->_name][] = $contact->toArray();
+
         return $this;
     }
-    
+
     function setAddress(Address $address)
     {
-        arr_set($this->_option, $this->_name, $address->toArray());
+        $this->_option[$this->_name][] = $address->toArray();
+
         return $this;
     }
 

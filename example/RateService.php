@@ -24,8 +24,24 @@ $shippingChargesPayment = new \Fedex\Structures\ShippingChargePayment();
 $shippingChargesPayment->setPaymentType('SENDER');
 $shippingChargesPayment->setPayor($payor);
 
-//$requestPackageLineItems = new \Fedex\Structures\RequestedPackageLineItems();
-//$requestPackageLineItems->setDimensions()
+$requestPackageLineItems = new \Fedex\Structures\RequestedPackageLineItems();
+$requestPackageLineItems->setSequenceNumber(1)
+    ->setDimensions(
+        (new \Fedex\Structures\Base\Dimensions())
+            ->setHeight(100)
+            ->setLength(100)
+            ->setUnits('IN')
+            ->setLength(20))
+    ->setInsuredValue(
+        (new \Fedex\Structures\Base\InsuredValue())
+            ->setAmount(100)
+            ->setCurrency('USD'))
+    ->setWeight((new \Fedex\Structures\Base\Weight())->setUnits('LB')->setValue(30))
+    ->setCustomerReferences(
+        (new \Fedex\Structures\Base\CustomerReferences())
+            ->setCustomerReferenceType(\Fedex\Structures\Base\CustomerReferences::TYPE_BILL_OF_LADING)
+            ->setValue('TC#053')
+    );
 // 请求运输时需要的信息
 $requestShipment = new \Fedex\Structures\RequestedShipment();
 $requestShipment->setDropoffType('REGULAR_PICKUP')
@@ -59,8 +75,8 @@ $requestShipment->setDropoffType('REGULAR_PICKUP')
             ->setResidential(1)
     )
     ->setShippingChargesPayment($shippingChargesPayment)    // 付款人
-    ->setPackageCount(1);                                   // 包裹数
-//    ->setRequestedPackageLineItems();
+    ->setPackageCount(1)                                    // 包裹数
+    ->setRequestedPackageLineItems($requestPackageLineItems);
 
 $service = new \Fedex\Service\Rate();                       // 服务调用
 $response = $service->set($auth)

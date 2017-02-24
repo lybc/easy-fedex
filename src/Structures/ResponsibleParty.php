@@ -25,19 +25,22 @@ class ResponsibleParty extends AbstractStructure
 
     function setTine(Tins $tins)
     {
-        arr_set($this->_option, $this->_name, $tins->toArray());
+        $this->_option[$this->_name][] = $tins->toArray();
+
         return $this;
     }
 
     function setContact(Contact $contact)
     {
-        arr_set($this->_option, $this->_name, $contact->toArray());
+        $this->_option[$this->_name][] = $contact->toArray();
+
         return $this;
     }
     
     function setAddress(Address $address)
     {
-        arr_set($this->_option, $this->_name, $address->toArray());
+        $this->_option[$this->_name][] = $address->toArray();
+
         return $this;
     }
 
