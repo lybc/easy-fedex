@@ -1,8 +1,11 @@
 <?php
-namespace Fedex\Structures\Base;
+namespace Fedex\Structures;
 
 
 use Fedex\AbstractStructure;
+use Fedex\Structures\Base\Address;
+use Fedex\Structures\Base\Contact;
+use Fedex\Structures\Base\Tins;
 
 class ResponsibleParty extends AbstractStructure
 {

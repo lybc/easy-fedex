@@ -50,4 +50,10 @@ class Address extends AbstractStructure
         return $this;
     }
 
+    function setResidential($residential)
+    {
+        arr_set($this->_option, $this->key('Residential'), $residential);
+        return $this;
+    }
+
 }
