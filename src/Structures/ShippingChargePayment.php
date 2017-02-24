@@ -33,21 +33,21 @@ class ShippingChargePayment extends AbstractStructure
      */
     function setPayor(Payor $payor)
     {
-        $this->_option[$this->_name][] = $payor->toArray();
+        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $payor->toArray());
 
         return $this;
     }
 
     function setContact(Contact $contact)
     {
-        $this->_option[$this->_name][] = $contact->toArray();
+        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $contact->toArray());
 
         return $this;
     }
 
     function setAddress(Address $address)
     {
-        $this->_option[$this->_name][] = $address->toArray();
+        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $address->toArray());
 
         return $this;
     }
