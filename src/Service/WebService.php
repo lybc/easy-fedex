@@ -1,6 +1,8 @@
 <?php
 namespace Fedex\Service;
 
+use Fedex\AbstractStructure;
+
 abstract class WebService
 {
     protected $wsdlPath = '';
@@ -33,9 +35,10 @@ abstract class WebService
         return $this;
     }
 
-    function set($key, $value)
+    function set(AbstractStructure $struct)
     {
-        arr_set($this->options, $key, $value);
+        array_merge($this->options, $struct->toArray());
+        return $this;
     }
 
     function setWsdl($wsdl)

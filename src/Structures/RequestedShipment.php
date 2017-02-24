@@ -92,5 +92,10 @@ class RequestedShipment extends AbstractStructure
         return $this;
     }
 
+    function setPackageCount($count)
+    {
+        arr_set($this->_option, $this->key('PackageCount'), $count);
+        return $this;
+    }
 
 }
