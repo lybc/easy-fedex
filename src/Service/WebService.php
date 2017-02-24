@@ -11,6 +11,26 @@ abstract class WebService
         'CustomerTransactionId' => ' *** Service Availability Request v5.1 using PHP ***'
     );
 
+    function getOptions($key = null)
+    {
+        if (is_null($key)) {
+            return $this->options;
+        }
+
+        if (isset($this->options[$key])) {
+            return $this->options[$key];
+        }
+
+        $array = [];
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($this->options) || !array_key_exists($segment, $this->options)) {
+                return [];
+            }
+            $array = $this->options[$segment];
+        }
+        return $array;
+    }
+
     function setVersionInfo($serviceId, $major, $intermediate, $minor)
     {
         $this->options['Version']['ServiceId'] = $serviceId;

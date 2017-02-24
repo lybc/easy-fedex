@@ -1,4 +1,12 @@
 <?php
+if (!function_exists('debug'))
+{
+    function debug(\Fedex\Service\WebService $webService)
+    {
+        echo sprintf("<pre>%s</pre>", print_r($webService->getOptions(), true));
+    }
+}
+
 if (!function_exists('arr_set')) {
     function arr_set(&$array, $keys, $value)
     {
