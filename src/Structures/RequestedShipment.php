@@ -98,4 +98,16 @@ class RequestedShipment extends AbstractStructure
         return $this;
     }
 
+    function setShippingChargesPayment(ShippingChargePayment $payment)
+    {
+        arr_set($this->_option, $this->_name, $payment->toArray());
+        return $this;
+    }
+
+    function setRequestedPackageLineItems(RequestedPackageLineItems $items)
+    {
+        arr_set($this->_option, $this->_name, $items->toArray());
+        return $this;
+    }
+
 }

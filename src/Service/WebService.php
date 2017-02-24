@@ -37,7 +37,7 @@ abstract class WebService
 
     function set(AbstractStructure $struct)
     {
-        array_merge($this->options, $struct->toArray());
+        $this->options = array_merge($this->options, $struct->toArray());
         return $this;
     }
 

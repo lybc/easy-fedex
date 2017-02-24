@@ -8,10 +8,6 @@
 
 namespace Fedex\Service;
 
-
-use Fedex\Structures\Base\Address;
-use Fedex\Structures\Base\Contact;
-
 class Rate extends WebService
 {
     private $_wsdlVersion = '20';
@@ -21,6 +17,11 @@ class Rate extends WebService
     {
         $this->setWsdl('RateService_v20.wsdl');
         $this->setVersionInfo($this->_serviceId, $this->_wsdlVersion, '0', '0');
+    }
+
+    function getRates()
+    {
+        return parent::call()->getRates($this->options);
     }
 
 

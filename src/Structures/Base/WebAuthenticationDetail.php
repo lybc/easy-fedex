@@ -15,15 +15,15 @@ class WebAuthenticationDetail extends AbstractStructure
 
     public function setParentCredential($key, $password)
     {
-        arr_set($this->_option, $this->key('ParentCredential.key'), $key);
-        arr_set($this->_option, $this->key('ParentCredential.password'), $password);
+        arr_set($this->_option, $this->key('ParentCredential.Key'), $key);
+        arr_set($this->_option, $this->key('ParentCredential.Password'), $password);
         return $this;
     }
 
     public function setUserCredential($key, $password)
     {
-        arr_set($this->_option, $this->key('UserCredential.key'), $key);
-        arr_set($this->_option, $this->key('UserCredential.password'), $password);
+        arr_set($this->_option, $this->key('UserCredential.Key'), $key);
+        arr_set($this->_option, $this->key('UserCredential.Password'), $password);
         return $this;
     }
 
