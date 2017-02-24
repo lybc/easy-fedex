@@ -13,7 +13,7 @@ abstract class AbstractStructure
 
     function key($key)
     {
-        return $key . '.' . $this->_name;
+        return $this->_name . '.' .$key;
     }
 
 }

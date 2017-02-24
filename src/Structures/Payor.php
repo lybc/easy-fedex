@@ -1,5 +1,5 @@
 <?php
-namespace Fedex\Structures\Base;
+namespace Fedex\Structures;
 
 
 use Fedex\AbstractStructure;
@@ -8,7 +8,7 @@ use Fedex\AbstractStructure;
  * Class Payor
  * 付款人
  *
- * @package Fedex\Structures\Base
+ * @package Fedex\Structures
  */
 class Payor extends AbstractStructure
 {
@@ -21,7 +21,7 @@ class Payor extends AbstractStructure
 
     function setResponsibleParty(ResponsibleParty $responsibleParty)
     {
-        arr_set($this->_option, $this->_name, $responsibleParty);
+        arr_set($this->_option, $this->_name, $responsibleParty->toArray());
         return $this;
     }
 }
