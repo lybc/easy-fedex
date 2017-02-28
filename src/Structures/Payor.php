@@ -21,7 +21,7 @@ class Payor extends AbstractStructure
 
     function setResponsibleParty(ResponsibleParty $responsibleParty)
     {
-        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $responsibleParty->toArray());
+        arr_include($this->_option[$this->_name], $responsibleParty->toArray());
         return $this;
     }
 }

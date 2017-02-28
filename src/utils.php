@@ -44,3 +44,14 @@ if (!function_exists('compose')) {
         return $options;
     }
 }
+
+if (!function_exists('arr_include')) {
+    function arr_include(&$mainArr, $subArr)
+    {
+        if (is_array($mainArr)) {
+            $mainArr = array_merge($mainArr, $subArr);
+        } else {
+            $mainArr = $subArr;
+        }
+    }
+}

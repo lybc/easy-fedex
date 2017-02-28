@@ -100,15 +100,14 @@ class RequestedShipment extends AbstractStructure
 
     function setShippingChargesPayment(ShippingChargePayment $payment)
     {
-        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $payment->toArray());
+        arr_include($this->_option[$this->_name], $payment->toArray());
 
         return $this;
     }
 
     function setRequestedPackageLineItems(RequestedPackageLineItems $items)
     {
-        $this->_option[$this->_name] = array_merge($this->_option[$this->_name], $items->toArray());
-
+        arr_include($this->_option[$this->_name], $items->toArray());
         return $this;
     }
 
