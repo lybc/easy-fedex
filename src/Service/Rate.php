@@ -19,7 +19,7 @@ class Rate extends WebService
         $this->setVersionInfo($this->_serviceId, $this->_wsdlVersion, '0', '0');
     }
 
-    function getRates()
+    function call()
     {
         return parent::call()->getRates($this->options);
     }

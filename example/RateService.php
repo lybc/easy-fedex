@@ -1,11 +1,12 @@
 <?php
+use Fedex\Structures\Base;
+
 // 认证用户
 $auth = new \Fedex\Structures\Base\WebAuthenticationDetail();
-$auth->setUserCredential('mU2Zo7b1d7IxSYnh', '3vmHGKAWOYRzbyPbNkbYXZIV1');
+$auth->setUserCredential('xxx', 'xxx');
 
 $client = new \Fedex\Structures\Base\ClientDetail();
-$client->setAccountNumber('510087240')->setMeterNumber('118780790');
-
+$client->setAccountNumber('xxx')->setMeterNumber('xxx');
 // wsdl 版本
 $version = new \Fedex\Structures\Base\Version();
 $version->setServiceId('crs')->setMajor('20')->setMinor('0')->setIntermediate('0');
@@ -28,26 +29,18 @@ $requestPackageLineItems = new \Fedex\Structures\RequestedPackageLineItems();
 $requestPackageLineItems->setSequenceNumber(1)
     ->setDimensions(
         (new \Fedex\Structures\Base\Dimensions())
-            ->setHeight(100)
-            ->setLength(100)
+            ->setHeight(5)
+            ->setWidth(5)
             ->setUnits('IN')
-            ->setLength(20))
-    ->setInsuredValue(
-        (new \Fedex\Structures\Base\InsuredValue())
-            ->setAmount(100)
-            ->setCurrency('USD'))
-    ->setWeight((new \Fedex\Structures\Base\Weight())->setUnits('LB')->setValue(30))
-    ->setCustomerReferences(
-        (new \Fedex\Structures\Base\CustomerReferences())
-            ->setCustomerReferenceType(\Fedex\Structures\Base\CustomerReferences::TYPE_BILL_OF_LADING)
-            ->setValue('TC#053')
-    );
+            ->setLength(108))
+    ->setWeight((new \Fedex\Structures\Base\Weight())->setUnits('LB')->setValue(50.0))
+    ->setGroupPackageCount(1);
 // 请求运输时需要的信息
 $requestShipment = new \Fedex\Structures\RequestedShipment();
 $requestShipment->setDropoffType('REGULAR_PICKUP')
-    ->setShipTimestamp()                                    // 运输发起时间
-    ->setServiceType('INTERNATIONAL_PRIORITY')              // 服务类型
-    ->setPackagingType('FEDEX_BOX')                         // 包裹类型
+    ->setShipTimestamp()// 运输发起时间
+    ->setServiceType('INTERNATIONAL_PRIORITY')// 服务类型
+    ->setPackagingType('YOUR_PACKAGING')// 包裹类型
     ->setShipper(                                           // 承运人
         (new \Fedex\Structures\Base\Contact())
             ->setPersonName('Sender Name')
@@ -59,28 +52,25 @@ $requestShipment->setDropoffType('REGULAR_PICKUP')
             ->setStateOrProvinceCode('TN')
             ->setPostalCode('38017')
             ->setCountryCode('US')
-            ->setResidential(1)
-    )
+            ->setResidential(1))
     ->setRecipient(                                         // 接收人
         (new \Fedex\Structures\Base\Contact())
             ->setPersonName('Recipient Name')
             ->setCompanyName('Recipient Company Name')
-            ->setPhoneNumber('1234567890'),
+            ->setPhoneNumber('9012637906'),
         (new \Fedex\Structures\Base\Address())
             ->setStreetLines(['Address Line 1'])
-            ->setCity('Herndon')
-            ->setStateOrProvinceCode('VA')
-            ->setPostalCode('20171')
-            ->setCountryCode('US')
-            ->setResidential(1)
-    )
-    ->setShippingChargesPayment($shippingChargesPayment)    // 付款人
-    ->setPackageCount(1)                                    // 包裹数
+            ->setCity('Richmond')
+            ->setStateOrProvinceCode('BC')
+            ->setPostalCode('V7C4V4')
+            ->setCountryCode('CA')
+            ->setResidential(false))
+    ->setShippingChargesPayment($shippingChargesPayment)// 付款人
+    ->setPackageCount('10')// 包裹数
     ->setRequestedPackageLineItems($requestPackageLineItems);
-
 $service = new \Fedex\Service\Rate();                       // 服务调用
-$response = $service->set($auth)
-    ->set($client)
-    ->set($version)
-    ->set($requestShipment)
+$response = $service->addStruct($auth)
+    ->addStruct($client)
+    ->addStruct($version)
+    ->addStruct($requestShipment)
     ->getRates();

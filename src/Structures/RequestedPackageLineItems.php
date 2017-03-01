@@ -26,25 +26,25 @@ class RequestedPackageLineItems extends AbstractStructure
 
     function setInsuredValue(InsuredValue $insuredValue)
     {
-        arr_set($this->_option, $this->key('InsuredValue'), $insuredValue->toArray());
+        arr_include($this->_option[$this->_name], $insuredValue->toArray());
         return $this;
     }
 
     function setWeight(Weight $weight)
     {
-        arr_set($this->_option, $this->key('Weight'), $weight->toArray());
+        arr_include($this->_option[$this->_name], $weight->toArray());
         return $this;
     }
 
     function setDimensions(Dimensions $dimensions)
     {
-        arr_set($this->_option, $this->key('Dimensions'), $dimensions->toArray());
+        arr_include($this->_option[$this->_name], $dimensions->toArray());
         return $this;
     }
 
     function setCustomerReferences(CustomerReferences $references)
     {
-        arr_set($this->_option, $this->key('CustomerReferences'), $references->toArray());
+        arr_include($this->_option[$this->_name], $references->toArray());
         return $this;
     }
 
