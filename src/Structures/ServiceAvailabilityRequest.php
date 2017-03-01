@@ -11,7 +11,7 @@ namespace Fedex\Structures;
 
 use Fedex\AbstractStructure;
 
-class ValidationAvailability extends AbstractStructure
+class ServiceAvailabilityRequest extends AbstractStructure
 {
     function setShipDate($date = '')
     {
@@ -35,6 +35,20 @@ class ValidationAvailability extends AbstractStructure
     function setPackaging($package)
     {
         arr_set($this->_option, 'Packaging', $package);
+        return $this;
+    }
+
+    function setOrigin($postalCode, $countryCode)
+    {
+        arr_set($this->_option, 'Origin.PostalCode', $postalCode);
+        arr_set($this->_option, 'Origin.CountryCode', $countryCode);
+        return $this;
+    }
+
+    function setDestination($postalCode, $countryCode)
+    {
+        arr_set($this->_option, 'Destination.PostalCode', $postalCode);
+        arr_set($this->_option, 'Destination.CountryCode', $countryCode);
         return $this;
     }
 }
