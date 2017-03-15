@@ -1,0 +1,3 @@
+[Default]
+bears = PHPCodeSnifferBear
+files = src/**.php

@@ -5,9 +5,7 @@
  * Date: 2017-2-22
  * Time: 11:48
  */
-
 namespace Fedex\Service;
-
 
 class RateAvailableService extends WebService
 {

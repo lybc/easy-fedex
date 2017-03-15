@@ -1,7 +1,5 @@
 <?php
-
 namespace Fedex\Service;
-
 
 class Locations extends WebService
 {

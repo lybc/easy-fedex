@@ -8,44 +8,43 @@
 
 namespace Fedex\Structures;
 
-
 use Fedex\AbstractStructure;
 
 class ServiceAvailabilityRequest extends AbstractStructure
 {
-    function setShipDate($date = '')
+    public function setShipDate($date = '')
     {
         if (empty($date)) $date = date('Y-m-d');
         arr_set($this->_option, 'ShipDate', $date);
         return $this;
     }
 
-    function setCarrierCode($code)
+    public function setCarrierCode($code)
     {
         arr_set($this->_option, 'CarrierCode', $code);
         return $this;
     }
 
-    function setService($service)
+    public function setService($service)
     {
         arr_set($this->_option, 'Service', $service);
         return $this;
     }
 
-    function setPackaging($package)
+    public function setPackaging($package)
     {
         arr_set($this->_option, 'Packaging', $package);
         return $this;
     }
 
-    function setOrigin($postalCode, $countryCode)
+    public function setOrigin($postalCode, $countryCode)
     {
         arr_set($this->_option, 'Origin.PostalCode', $postalCode);
         arr_set($this->_option, 'Origin.CountryCode', $countryCode);
         return $this;
     }
 
-    function setDestination($postalCode, $countryCode)
+    public function setDestination($postalCode, $countryCode)
     {
         arr_set($this->_option, 'Destination.PostalCode', $postalCode);
         arr_set($this->_option, 'Destination.CountryCode', $countryCode);
